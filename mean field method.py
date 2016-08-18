@@ -18,10 +18,10 @@ v_2 = [mu_2]
 l =10
 
 #choose experiment: dependent or independent
-experiment = "dependent"
+experiment = "independent"
 
 if experiment == "dependent":
-    p_00, p_01, p_10, p_11  = 1/8, 1, 1/4, 5/8   #define joint probability distribution on {0, 1}^2
+    p_00, p_01, p_10, p_11  = 1/8, 1, 1/4, 5/8   #proportional to joint probability distribution on {0, 1}^2
 
 elif experiment == "independent":
     theta_1, theta_2= 0.7, 0.1  #parameters of marginal bernouli distributions
