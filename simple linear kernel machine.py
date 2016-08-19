@@ -1,7 +1,7 @@
 import numpy as np
 from matplotlib import pyplot as plt
 
-""" plain simple linear regression with bases function extensiony """
+""" simple linear kernel machine """
 
 
 # Specify kernel
