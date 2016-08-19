@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 
 
 # Specify kernel
-def kernel(x, m, rho=0.01):
+def kernel(x, m, rho=0.1):
     return np.exp(-1/2*(x-m)**2/rho)  #SE Kernel with bandwith rho
 
 def create_feature_vector(x, train_data):
@@ -13,7 +13,8 @@ def create_feature_vector(x, train_data):
 
 # Draw x-coorinates uniformly distributed in [a,b]
 a, b = -5, 5
-nr_points = 5
+nr_points = 100
+regularization_constant = 1
 
 def transform_to_interval(x, low_bound=-1, upper_bound=1):
     return (upper_bound - low_bound) * x + low_bound
@@ -36,7 +37,7 @@ X = x.reshape(-1, 1)
 Y = y.reshape(-1, 1)
 
 X = np.hstack([create_feature_vector(X, X), np.ones_like(X)])     # add biases
-w = np.linalg.inv(X.T @ X) @ X.T  @ Y
+w = np.linalg.inv(X.T @ X + regularization_constant*np.eye(X.shape[1])) @ X.T  @ Y
 
 # Prediction
 x_true = np.linspace(a, b, 500).reshape(-1, 1)
