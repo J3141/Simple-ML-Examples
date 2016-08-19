@@ -19,7 +19,7 @@ x = transform_to_intervall(np.random.random(nr_points),
 
 x.sort()  # for plotting
 
-""" Draw y-coorindates normally distributed with std rho
+""" Draw y-coordinates normally distributed with std rho
     and mean conditional_mean"""
 rho = 5
 
@@ -28,7 +28,7 @@ def conditional_mean(x):
 
 y = np.random.normal(conditional_mean(x), rho, nr_points)
 
-""" learning weights using Pseudo Inverse to solve y=w_1x + w_0"""
+""" learning weights using Pseudo Inverse"""
 X = x.reshape(-1, 1)
 Y = y.reshape(-1, 1)
 
