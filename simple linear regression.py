@@ -12,15 +12,15 @@ def transform_to_intervall(x, low_bound=-1, upper_bound=1):
     return (upper_bound - low_bound) * x + low_bound
 
 x = transform_to_intervall(np.random.random(nr_points),
-                           low_bound=-1, upper_bound=1)
+                           low_bound=a, upper_bound=b)
 x.sort()  # for plotting
 
 """ Draw y-coorindates normally distributed with std rho
     and mean conditional_mean"""
-rho = 0.3
+rho = 5
 
 def conditional_mean(x):
-    return x**2 + x + 1
+    return x**3 - x**2 - 10*x + 1
 
 y = np.random.normal(conditional_mean(x), rho, nr_points)
 
@@ -32,7 +32,7 @@ X = np.hstack([X, np.ones_like(X)])     # add biases
 w = np.linalg.inv(X.T @ X) @ X.T  @ Y
 
 """ Prediction """
-x_true = np.linspace(a, b)
+x_true = np.linspace(a, b, 1000)
 y_true = conditional_mean(x_true)
 prediction = (w[0] @ x_true.reshape(1, -1) + w[1])
 
